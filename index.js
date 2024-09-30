@@ -28,8 +28,8 @@ app.post("/recipe", (req, res) => {
   let recipe = '';
   recipeObject.forEach(object => {
     if(object.ingredients.protein.name.toLowerCase() === choice){
-      recipe = object;
-    
+      recipe = JSON.stringify(object);
+      console.log(recipe);
       res.redirect(`/?recipe=${recipe}`);
     }
 
