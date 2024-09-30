@@ -13,7 +13,20 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
-  res.render("index.ejs");
+
+  
+  
+  if (req.query.recipe) {
+    const recipe = JSON.parse(req.query.recipe);
+    res.render("index.ejs", {
+      recipe:recipe
+    });
+    
+  }else{
+    res.render("index.ejs", {
+      recipe: null
+    });
+  }  
 });
 
 app.post("/recipe", (req, res) => {
